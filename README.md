@@ -87,4 +87,5 @@ The original project was developed under strict restrictions on the use of `java
 ---
 
 ## Course
-
+ 
+**Algorithms and Data Structures (AED)** — NOVA FCT, 2025/26
