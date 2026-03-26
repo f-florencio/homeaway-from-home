@@ -82,7 +82,7 @@ java Main
 
 ## Notes
 
-The original project was developed under strict restrictions on the use of `java.util`. This version has been modified to include parts of `java.util` where it made practical sense, as the restrictions were specific to the academic context and not to the logic of the application itself.
+The original project was developed under strict restrictions on the use of `java.util` and substring methods. This version has been modified to include parts of `java.util` where it made practical sense, as the restrictions were specific to the academic context and not to the logic of the application itself.
 
 ---
 
