@@ -26,7 +26,6 @@ import static messages.Outputs.*;
 public class Main {
 
     private static final String ALL = "all";
-
     private static boolean boundsSet;
     private static SystemInterface systemInterface;
 
@@ -43,22 +42,9 @@ public class Main {
         }
     }
 
-    private static Character[] charToCharacterArray(char[] tagChar) {
-        Character[] tag = new Character[tagChar.length];
-        for (int i = 0; i < tagChar.length; i++) {
-            char c = tagChar[i];
-            if (c >= 'A' && c <= 'Z') {
-                c = (char)(c + 32);
-            }
-            tag[i] = c;
-        }
-        return tag;
-    }
-
     private static void listTaggedServices(Scanner in) {
         if (!checkBounds(2, in)) return;
-        char[] tagChar = in.nextLine().trim().toCharArray();
-        Character[] tag = charToCharacterArray(tagChar);
+        String tag = in.nextLine().trim().toLowerCase();
         boolean anyListed = false;
         Iterator<Service> it = systemInterface.getServicesTaggedWith(tag);
         while (it.hasNext()) {
@@ -110,7 +96,7 @@ public class Main {
         if (!checkBounds(2, in)) return;
         int star = in.nextInt();
         String serviceName = in.nextLine().trim();
-        String description = in.nextLine().trim();
+        String description = in.nextLine().trim().toLowerCase();
         try {
             systemInterface.rateService(star, serviceName, description);
             outputWriter(EVALUATION_REG);

@@ -170,7 +170,7 @@ public interface SystemInterface extends Serializable {
      * @param tag Tag to search for
      * @return Iterator of tagged services
      */
-    Iterator<Service> getServicesTaggedWith(Character[] tag);
+    Iterator<Service> getServicesTaggedWith(String tag);
 
     /**
      * Gets services filtered by type and minimum star rating.

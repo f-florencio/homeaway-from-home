@@ -1,6 +1,5 @@
 package services;
 
-import algorithms.StringMatcher;
 import services.reviews.Review;
 
 import java.io.Serializable;
@@ -98,14 +97,15 @@ public abstract class AbstractService implements Service, Serializable {
      * Checks if service contains a specific tag.
      *
      * @param tag    Tag to search for
-     * @param matcher String matcher algorithm
      * @return true if tag found in any review
      */
     @Override
-    public boolean containsTag(Character[] tag, StringMatcher matcher) {
+    public boolean containsTag(String tag) {
+        String regex = "\\b" + java.util.regex.Pattern.quote(tag) + "\\b";
         for (Review r : reviews) {
-            if (matcher.matches(tag, r.tags()))
+            if (r.description().matches(".*" + regex + ".*")) {
                 return true;
+            }
         }
         return false;
     }

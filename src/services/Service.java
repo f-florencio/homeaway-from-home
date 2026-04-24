@@ -1,6 +1,5 @@
 package services;
 
-import algorithms.StringMatcher;
 import services.reviews.Review;
 
 import java.io.Serializable;
@@ -37,10 +36,9 @@ public interface Service extends ServiceReadOnly, Serializable{
      * Checks if service contains a specific tag.
      *
      * @param tag     Tag to search for
-     * @param matcher String matching algorithm
      * @return true if tag found in any review
      */
-    boolean containsTag(Character[] tag, StringMatcher matcher);
+    boolean containsTag(String tag);
 
     /**
      * Returns exact average rating.

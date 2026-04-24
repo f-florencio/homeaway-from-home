@@ -1,8 +1,5 @@
 package system.application;
 
-
-import algorithms.KMPAlgorithm;
-import algorithms.StringMatcher;
 import city.City;
 import exceptions.*;
 import java.util.*;
@@ -419,12 +416,10 @@ public class SystemClass implements SystemInterface{
      * @throws ThingNotExistsException If service doesn't exist
      */
     @Override
-    public void rateService(int star, String name, String description)
-            throws InvalidEvaluationException, ThingNotExistsException {
+    public void rateService(int star, String name, String description) throws InvalidEvaluationException, ThingNotExistsException {
         Service service = services.getService(name);
         checkForErrorsRateService(star, service, name);
-        Character[] tags = getCharacterString(description);
-        Review review = new Review(star, description, tags);
+        Review review = new Review(star, description);
         int oldRounded = service.getEvaluationAverageRounded();
         float oldFloat = service.getAverageRating();
         service.evaluate(review, star);
@@ -581,13 +576,12 @@ public class SystemClass implements SystemInterface{
      * @return Iterator of tagged services
      */
     @Override
-    public Iterator<Service> getServicesTaggedWith(Character[] tag) {
+    public Iterator<Service> getServicesTaggedWith(String tag) {
         Iterator<Service> it = services.getAllServicesIterator();
         List<Service> tagged = new LinkedList<>();
-        StringMatcher matcher = new KMPAlgorithm();
         while (it.hasNext()) {
             Service s = it.next();
-            if(s.containsTag(tag, matcher))
+            if(s.containsTag(tag))
                 tagged.addLast(s);
         }
         return tagged.iterator();
